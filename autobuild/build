@@ -1,1 +1,0 @@
-qmake lipstick.pro && make $ABMK && make INSTALL_ROOT=`pwd`/abdist install
