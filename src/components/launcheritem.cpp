@@ -171,7 +171,9 @@ bool LauncherItem::shouldDisplay() const
 
 bool LauncherItem::isValid() const
 {
-    return !_desktopEntry.isNull() ? _desktopEntry->isValid() : _isTemporary;
+    if(!_desktopEntry.isNull() ? _desktopEntry->isValid() : _isTemporary)
+        return _desktopEntry->onlyShowIn().indexOf("MAOS") != -1;
+    return false;
 }
 
 bool LauncherItem::isLaunching() const

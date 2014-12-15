@@ -1,9 +1,9 @@
 TEMPLATE = subdirs
-SUBDIRS += src plugin tools tests doc
+SUBDIRS += src plugin tools doc
 
 plugin.depends = src
 tools.depends = src
-tests.depends = src
+# tests.depends = src
 
 QMAKE_CLEAN += \
     build-stamp \
