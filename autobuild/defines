@@ -1,0 +1,5 @@
+PKGNAME=lipstick 
+PKGVER=0.25.24
+PKGDES="Nemo UI Framework"
+PKGSEC=x11
+PKGDEP="mlite mce libngf-qt qmsystem libresourceqt wayland qt-5 statefs-qt qtsystems"

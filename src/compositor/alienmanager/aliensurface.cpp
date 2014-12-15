@@ -23,13 +23,14 @@
 AlienSurface::AlienSurface(AlienClient *client, QWaylandSurface *surface, uint32_t version, uint32_t id, const QString &package)
             : QObject(client)
             , QWaylandSurfaceInterface(surface)
-            , QtWaylandServer::alien_surface(reinterpret_cast<wl_client *>(surface->client()), id, version)
+            , QtWaylandServer::alien_surface(reinterpret_cast<wl_client *>(surface->client()), id)
             , m_client(client)
             , m_hidden(false)
             , m_coverized(false)
             , m_lastSize(0, 0)
             , m_serial(0)
 {
+    Q_UNUSED(version)
     LipstickCompositor *compositor = LipstickCompositor::instance();
     sendConfigure(compositor->width(), compositor->height());
     connect(surface, &QWaylandSurface::configure, this, &AlienSurface::configure);

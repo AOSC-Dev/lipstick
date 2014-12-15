@@ -38,8 +38,9 @@ void AlienManagerGlobal::bind(wl_client *client, uint32_t version, uint32_t id)
 
 AlienManager::AlienManager(wl_client *client, uint32_t version, uint32_t id, QObject *parent)
             : QObject(parent)
-            , QtWaylandServer::alien_manager(client, id, version)
+            , QtWaylandServer::alien_manager(client, id)
 {
+    Q_UNUSED(version)
 }
 
 AlienManager::~AlienManager()
@@ -80,10 +81,11 @@ void AlienManager::alien_manager_pong(Resource *resource, uint32_t serial)
 
 AlienClient::AlienClient(AlienManager *mgr, wl_client *client, uint32_t version, uint32_t id, const QString &package)
            : QObject(mgr)
-           , QtWaylandServer::alien_client(client, id, version)
+           , QtWaylandServer::alien_client(client, id)
            , m_package(package)
            , m_manager(mgr)
 {
+    Q_UNUSED(version)
 }
 
 AlienClient::~AlienClient()
